@@ -93,7 +93,21 @@ namespace ChipSecuritySystem.Services
             chips.Add(new ColorChip(Color.Blue, Color.Orange));
             chips.Add(new ColorChip(Color.Red, Color.Green));
             chips.Add(new ColorChip(Color.Green, Color.Purple));
+            chips.Add(new ColorChip(Color.Yellow, Color.Orange));
+            return chips;
+        }
 
+        internal List<ColorChip> GetTestRandomChips(int n)
+        {
+            Random rand = new Random();
+            List<ColorChip> chips = new List<ColorChip>();
+            for(int i = 0; i < n; i++)
+            {
+                Color firstColor = (Color)rand.Next(0, 5);
+                Color secondColor = (Color)rand.Next(0, 5);
+
+                chips.Add(new ColorChip(firstColor, secondColor));
+            }
             return chips;
         }
     }

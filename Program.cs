@@ -13,16 +13,16 @@ namespace ChipSecuritySystem
         {
             Color startColor = GetColor(args, "-startColor", "Blue");
             Color endColor = GetColor(args, "-endColor", "Green");
-           
-            bool smallestList = !args.Contains("--longest") && !args.Contains("-l"); //smallestL
+
+            bool smallestList = args.Contains("-shortest");
 
             ChipService s = new ChipService();
-            List<ColorChip> list = s.GetTestChips();
+            List<ColorChip> list = s.GetTestRandomChips(10);
             Console.WriteLine("This is the list of bi-color chips:");
 
             foreach(var item in list)
             {
-               Console.WriteLine($"[{item.StartColor}, {item.EndColor}]");
+               Console.WriteLine(item.ToString());
             }
             Console.WriteLine("");
             List<ColorChip> validCombinations = s.ValidCombinations(list, startColor, endColor, smallestList);
@@ -32,8 +32,9 @@ namespace ChipSecuritySystem
             {
                 Console.WriteLine($"Valid combination found from {startColor} to {endColor}.  The {(smallestList ? "shortest" : "longest")} combination is:");
                 foreach (var item in validCombinations)
-                    Console.WriteLine($"[{item.StartColor}, {item.EndColor}]");
+                    Console.WriteLine(item.ToString());
             }
+            Console.ReadLine();
         }
 
         private static Color GetColor(string[] args, string name, string defaultValue)
