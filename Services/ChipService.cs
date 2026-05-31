@@ -103,8 +103,8 @@ namespace ChipSecuritySystem.Services
             List<ColorChip> chips = new List<ColorChip>();
             for(int i = 0; i < n; i++)
             {
-                Color firstColor = (Color)rand.Next(0, 5);
-                Color secondColor = (Color)rand.Next(0, 5);
+                Color firstColor = (Color)rand.Next(0, 6);
+                Color secondColor = (Color)rand.Next(0, 6);
 
                 chips.Add(new ColorChip(firstColor, secondColor));
             }
